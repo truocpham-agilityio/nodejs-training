@@ -8,8 +8,10 @@
   "author": "Truoc Pham",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.13.3",
     "express": "^4.13.3",
     "ms": "^0.6.2",
+    "serve-index": "^1.7.2",
     "serve-static": "^1.10.0"
   }
 }
