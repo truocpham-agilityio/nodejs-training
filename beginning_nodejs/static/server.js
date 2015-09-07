@@ -31,6 +31,11 @@ app.get('/', function(req, res){
   res.render('./index');
 });
 
+app.get('/home', function(req, res, next) {
+  console.log('original: ', req.originalUrl);
+  next();
+});
+
 app.get('/clear', function(req, res) {
   if (req.cookies.name) {
     res.clearCookie('name');
