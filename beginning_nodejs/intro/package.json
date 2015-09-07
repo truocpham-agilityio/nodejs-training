@@ -1,0 +1,14 @@
+{
+  "name": "intro",
+  "version": "1.0.0",
+  "description": "This is introducing Express in Node.js",
+  "main": "basic-express.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Truoc Pham",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
