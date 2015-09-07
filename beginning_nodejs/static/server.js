@@ -1,7 +1,8 @@
 var express = require('express'),
     serveIndex = require('serve-index'),
     path = require('path'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    cookieParser = require('cookie-parser');
 
 // fix me
 var port = 3000;
@@ -20,6 +21,8 @@ app.use('stylesheets', express.static(path.join(__dirname +'/public/stylesheets'
 app.use(bodyParser.json());
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
+// parser cookie
+app.use(cookieParser());
 
 // A browser's default method is 'GET', so this
 // is the route that express uses when we visit
@@ -33,8 +36,19 @@ app.get('/', function(req, res){
 // that `req.body` will be filled in with the form elements
 app.post('/', function(req, res){
   var userName = req.body.userName;
-  var html = 'Hello: ' + userName + '.<br>' +
-             '<a href="/">Try again.</a>';
+  var html;
+
+  if (userName) {
+    console.log('Cookies.name: ', req.cookies.name);
+    html = 'Hello: ' + userName + '.<br>' +
+           '<a href="/">Try again.</a>';
+  }
+  else {
+    res.cookie('name', 'foo');
+    html = 'Hello: ' + req.cookies.name + '.<br>' +
+           '<a href="/">Try again.</a>';
+  }
+
   res.send(html);
 });
 
