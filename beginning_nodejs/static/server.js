@@ -31,6 +31,17 @@ app.get('/', function(req, res){
   res.render('./index');
 });
 
+app.get('/clear', function(req, res) {
+  if (req.cookies.name) {
+    res.clearCookie('name');
+    res.end('name cookie cleared! Was: ' + req.cookies.name);
+  }
+  else {
+    res.cookie('name', 'foo');
+    res.end('name cookie set!');
+  }
+});
+
 // This route receives the posted form.
 // As explained above, usage of 'body-parser' means
 // that `req.body` will be filled in with the form elements
