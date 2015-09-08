@@ -28,12 +28,23 @@ MongoClient.connect('mongodb://127.0.0.1:27017/demo', function(error, db) {
 
     // select people collection in demo database
     var collection = db.collection('people');
+
+    // insert person1 into db
     collection.insert(person1, function(error, records) {
       // print out
       console.log('Inserted: ', records[0]);
       console.log('ID: ', person1._id);
 
-      // Finally, close db
-      db.close();
+      // find person based on findKey
+      collection.find(findKey).toArray(function(error, results) {
+        console.log('Found results: ', results);
+
+        collection.remove(findKey, function(error, results) {
+          console.log('Deleted person: ', findKey.first);
+
+          // Finally, close db
+          db.close();
+        });
+      });
     });
 });
