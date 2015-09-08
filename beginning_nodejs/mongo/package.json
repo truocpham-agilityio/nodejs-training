@@ -1,0 +1,30 @@
+{
+  "name": "mongo",
+  "version": "0.0.1",
+  "description": "This is example using MongoDB with Nodejs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.asoft-python.com:g-truocpham/nodejs-training.git"
+  },
+  "keywords": [
+    "mongodb"
+  ],
+  "author": "Truoc Pham",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^1.4.2",
+    "body-parser": "^1.13.3",
+    "cookie-parser": "^1.3.5",
+    "express": "^4.13.3",
+    "express-session": "^1.11.3",
+    "jade": "^1.11.0",
+    "less-middleware": "^2.0.1",
+    "mongodb": "^1.4.39",
+    "mongoose": "^4.1.5",
+    "mongoskin": "^1.4.13",
+    "underscore": "^1.8.3"
+  }
+}
