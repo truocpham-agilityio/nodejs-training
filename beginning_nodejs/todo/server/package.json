@@ -20,6 +20,7 @@
     "jade": "^1.11.0",
     "less-middleware": "^2.0.1",
     "mongodb": "^1.4.39",
+    "mongoose": "^4.1.6",
     "mongoskin": "^1.4.13",
     "serve-favicon": "^2.3.0",
     "underscore": "^1.8.3"

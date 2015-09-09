@@ -6,37 +6,53 @@
 var todoApp = angular.module('todo', []);
 
 // MainController
-todoApp.controller('MainController', ['$scope', 'guidService', function($scope, guidService) {
+todoApp.controller('MainController', ['$scope', 'todoWebService', function($scope, todoWebService) {
+
   // setup a view model
   var vm = {};
 
-  // create list todo
-  vm.list = [
-    {
-      _id: guidService.createGuid(),
-      details: 'First Item'
-    },
-    {
-      _id: guidService.createGuid(),
-      details: 'Second Item'
-    }
-  ];
+  // init todo list
+  vm.list = [];
 
-  // create add item function
+  /**
+   * Start the initial load of lists
+   */
+  todoWebService.getItems().then(function(response) {
+    vm.list = response.data.items;
+  });
+
+  /**
+   * create add item function
+   */
   vm.addItem = function() {
-    vm.list.push({
-      _id: guidService.createGuid(),
+    // init item
+    var item = {
       details: vm.newItemDetails
-    });
+    };
 
+    // clear details from UI
     vm.newItemDetails = '';
+
+    // send the request to the server and add the item once done
+    todoWebService.addItem(item).then(function(response) {
+      vm.list.push({
+        _id: response.data.itemId,
+        details: item.details
+      });
+    });
   };
 
-  // create remove item function
+  /**
+   * create remove item function
+   */
   vm.removeItem = function(itemToRemove) {
+    // remove item from list
     vm.list = vm.list.filter(function(item) {
       return item._id !== itemToRemove._id;
     });
+
+    // and send the server request
+    todoWebService.removeItem(itemToRemove);
   };
 
   // New item details
@@ -47,14 +63,18 @@ todoApp.controller('MainController', ['$scope', 'guidService', function($scope, 
 }]);
 
 // Service
-todoApp.service('guidService', function() {
-  return {
-    createGuid: function() {
-      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+todoApp.service('todoWebService', ['$http', function($http) {
+  var root = '/todo';
 
-        return v.toString(16);
-      });
+  return {
+    getItems: function() {
+      return $http.get(root);
+    },
+    addItem: function(item) {
+      return $http.post(root, item);
+    },
+    removeItem: function(item) {
+      return $http.delete(root + '/' + item._id);
     }
   };
-});
+}]);
