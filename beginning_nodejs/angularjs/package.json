@@ -1,0 +1,20 @@
+{
+  "name": "angularjs",
+  "version": "0.0.1",
+  "description": "Set up a simple AngularJS application",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.asoft-python.com:g-truocpham/nodejs-training.git"
+  },
+  "keywords": [
+    "angularjs"
+  ],
+  "author": "Truoc Pham",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}

@@ -1,0 +1,46 @@
+<html ng-app="demo">
+  <head>
+    <title>Sample App</title>
+
+    <!-- Add JQuery + Bootstrap JS / CSS + AngularJS-->
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.min.js"></script>
+
+    <!-- Our Script -->
+    <script>
+      var demoApp = angular.module('demo', []);
+      demoApp.controller('MainController', ['$scope', function($scope) {
+        $scope.vm = {
+          name: "foo",
+          clearName: function () {
+            this.name = "";
+          }
+        };
+      }]);
+    </script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  </head>
+  <body ng-controller="MainController">
+    <!-- Our HTML -->
+    <div class="bs-example" style="padding-top: 20px;">
+      <div class="container">
+        <form class="form-inline">
+          <div class="form-group">
+            <label for="inpName">Type your name:</label>
+            <input class="form-control" id="inpName" type="text" ng-model="vm.name">
+          </div>
+          <button class="btn btn-danger" ng-click="vm.clearName()">Clear Name</button>
+        </form>
+        <h2>Hello {{vm.name}}!</h2>
+      </div>
+    </div>
+  </body>
+</html>
