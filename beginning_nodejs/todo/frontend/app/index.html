@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todo">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Todo List</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+  <link href="favicon.ico" rel="icon" type="image/x-icon" />
+
+  <!-- Add JQuery + Bootstrap JS / CSS + AngularJS-->
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+
+  <!-- Our script -->
+  <script type="text/javascript" src="./scripts/main.js"></script>
+</head>
+<body ng-controller="MainController">
+  <!-- Our HTML -->
+  <div class="container">
+    <h1>Todo List</h1>
+
+    <!-- Existing item -->
+    <div class="row">
+      <div ng-repeat="item in vm.list track by item._id" style="padding: 10px;">
+        <button class="btn btn-danger" ng-click="vm.removeItem(item)">x</button>
+        {{item.details}}
+      </div>
+    </div>
+
+    <!-- New items -->
+    <div class="row">
+      <form role="form">
+        <div class="form-group">
+          <label for="newItem">New Item Details:</label>
+          <input type="text" class="form-control" id="newItem" ng-model="vm.newItemDetails" placeholder="Detail of new todo item">
+        </div>
+        <button class="btn btn-primary" type="submit" ng-click="vm.addItem()" ng-disabled="!vm.newItemDetails">Add</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
