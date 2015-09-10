@@ -34,7 +34,6 @@
     <div class="row">
       <div ng-repeat="item in vm.list track by item._id" style="padding: 10px;">
         <button class="btn btn-danger" ng-click="vm.removeItem(item)"><i class="glyphicon glyphicon-remove"></i></button>
-        <button class="btn glyphicon glyphicon-pencil" style="margin-right: 10px;" ng-click="vm.updateItem(item)"></button>
         {{item.details}}
       </div>
     </div>

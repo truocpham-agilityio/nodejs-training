@@ -5,14 +5,10 @@ var http = require('http'),
     path = require('path'),
     express = require('express'),
     favicon = require('serve-favicon'),
-    _ = require('underscore'),
-    async = require('async'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
-    mongodb = require('mongodb'),
-    Router = require('./router'),
-    TodoModel = require('../components/models/todo-model'),
+    todosRouter = require('./todos'),
     config = require('../config/_config');
 
 // create an express application
@@ -46,7 +42,6 @@ mongoose.connect(config.db, function(error, database) {
 // use favicon for application
 app.use(favicon(path.join(__dirname, config.rootPath + 'favicon.ico')));
 
-app.use(Router);
 
 // parse application/json
 app.use(bodyParser.json());
@@ -59,3 +54,8 @@ app.use(cookieParser());
 // use public
 // The other static files are also in the frontend/app folder
 app.use(express.static(path.join(__dirname, config.rootPath)));
+
+/**
+ * Router
+ */
+app.use('/api', todosRouter);

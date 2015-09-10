@@ -3,9 +3,13 @@ var mongoose = require('mongoose'),
 
 // Define todoSchema
 var todoSchema = new Schema({
-  _id: String,
   details: String
 });
 
 // create Todo Model
-mongoose.model('Todo', todoSchema);
+var TodoModel = mongoose.model('Todo', todoSchema);
+
+/**
+ * Expose.
+ */
+module.exports = TodoModel;
