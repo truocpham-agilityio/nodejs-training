@@ -40,21 +40,22 @@ router.post('/', function(req, res, next) {
 
 router.delete('/:id', function(req, res, next) {
   var id = req.params['id'];
-  var item =  databaseServices.todos.modelClass.findOne({ '_id': id });
 
-  item.findOneAndRemove(function(error, todos) {
+  // remove by id
+  databaseServices.todos.removeById(id, function(error, todo) {
+    // throw error
     if (error) throw error;
 
     // removed!
-    res.send(todos);
+    res.send(todo);
   });
 });
 
 router.put('/:id', function(req, res, next) {
   var id = req.params['id'];
 
-  // findById and update the details of item
-  databaseServices.todos.modelClass.findOneAndUpdate({ '_id': id }, { 'details': 'Updated!' }, function(error, todo) {
+  // 'details' always hav values 'Updated!'
+  databaseServices.todos.updateById(id, function(error, todo) {
     if (error) {
       throw error;
     }

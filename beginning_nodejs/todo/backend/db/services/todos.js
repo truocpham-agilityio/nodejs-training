@@ -16,13 +16,13 @@ module.exports = {
     new this.modelClass(data).save(callback);
   },
 
-  // update item
-  update: function(data, callback) {
-    this.modelClass(data).update(callback);
+  // update item by id
+  updateById: function(id, callback) {
+    this.modelClass.findOneAndUpdate({ '_id': id }, { 'details': 'Updated!' }, callback);
   },
 
-  // delete item
-  remove: function(data, callback) {
-    this.modelClass(data).remove(callback);
+  // remove item by id
+  removeById: function(id, callback) {
+    this.modelClass.findOneAndRemove({ '_id': id }, callback);
   }
 };
