@@ -82,7 +82,7 @@ todoApp.controller('MainController', ['$scope', 'todoWebService', function($scop
 
 // Service
 todoApp.service('todoWebService', ['$http', function($http) {
-  var root = '/todos';
+  var root = '/api';
 
   return {
     getItems: function() {
