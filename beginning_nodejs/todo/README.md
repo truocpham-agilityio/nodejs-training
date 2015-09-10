@@ -1,13 +1,22 @@
-# Install module dependencies
+# Todo Application
+
+Follow step by step as blow:
+
+### Backend side
+
+1. Install module dependencies
 
 ```
-cd server/
+cd backend/
 sudo npm install
 ```
 
-
-# Start server
+2. Start server
 
 ```
-node app.js
+node server/app.js
 ```
+
+
+### Cliend side
+

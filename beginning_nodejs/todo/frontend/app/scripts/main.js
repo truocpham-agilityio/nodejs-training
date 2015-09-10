@@ -43,6 +43,24 @@ todoApp.controller('MainController', ['$scope', 'todoWebService', function($scop
   };
 
   /**
+   * update item function
+   */
+  // vm.updateItem = function(itemToUpdate) {
+  //   var itemFound = vm.list.filter(function(item) {
+  //     return item._id === itemToUpdate._id;
+  //   });
+
+  //   if (!itemFound.length) {
+  //     console.log('Not found item in list');
+  //   }
+
+  //   itemFound[0].details = 'Item updated';
+
+  //   // send the server request to update
+  //   todoWebService.updateItem(itemFound[0]);
+  // };
+
+  /**
    * create remove item function
    */
   vm.removeItem = function(itemToRemove) {
@@ -64,7 +82,7 @@ todoApp.controller('MainController', ['$scope', 'todoWebService', function($scop
 
 // Service
 todoApp.service('todoWebService', ['$http', function($http) {
-  var root = '/todo';
+  var root = '/todos';
 
   return {
     getItems: function() {
@@ -73,6 +91,9 @@ todoApp.service('todoWebService', ['$http', function($http) {
     addItem: function(item) {
       return $http.post(root, item);
     },
+    // updateItem: function(item) {
+    //   return $http.update(root, item);
+    // },
     removeItem: function(item) {
       return $http.delete(root + '/' + item._id);
     }
