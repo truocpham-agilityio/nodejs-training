@@ -58,4 +58,4 @@ app.use(express.static(path.join(__dirname, config.rootPath)));
 /**
  * Router
  */
-app.use('/api', todosRouter);
+app.use('/api/todos', todosRouter);
