@@ -1,6 +1,6 @@
 var express = require('express'),
     router = express.Router('/todos'),
-    todoDBServices = require('../db/services/todos');
+    databaseServices = require('../db/database-manager');
 
 /**
  * Router configuration endpoint
@@ -15,7 +15,7 @@ router.use(function(req, res, next) {
  * REST api
  */
 router.get('/', function(req, res, next) {
-  todoDBServices.getAll(function(error, todos) {
+  databaseServices.todoDBServices.getAll(function(error, todos) {
     if (error) {
       throw error;
     }
@@ -31,7 +31,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
   var data = req.body;
 
-  todoDBServices.create(data, function(error, todo) {
+  databaseServices.todoDBServices.create(data, function(error, todo) {
     if (error) {
       throw error;
     }
@@ -48,7 +48,7 @@ router.delete('/:id', function(req, res, next) {
   var id = req.params['id'];
 
   // remove by id
-  todoDBServices.removeById(id, function(error, todo) {
+  databaseServices.todoDBServices.removeById(id, function(error, todo) {
     // throw error
     if (error) throw error;
 
@@ -63,7 +63,7 @@ router.put('/:id', function(req, res, next) {
   var id = req.params['id'];
 
   // 'details' always hav values 'Updated!'
-  todoDBServices.updateById(id, function(error, todo) {
+  databaseServices.todoDBServices.updateById(id, function(error, todo) {
     if (error) {
       throw error;
     }

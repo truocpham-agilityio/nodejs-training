@@ -1,4 +1,4 @@
-var BaseDBService = require('./base-db-service');
+var oop = require('node-g3').oop;
 
 /**
  * Expose.
@@ -7,7 +7,7 @@ var BaseDBService = require('./base-db-service');
  *
  * Define base of mongodb service
  */
-module.exports = BaseDBService.extend({
+module.exports = oop.Base.extend({
 
   // default modelClass is null
   modelClass: null,
