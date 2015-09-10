@@ -21,7 +21,10 @@ router.get('/', function(req, res, next) {
     }
 
     // get all!
-    res.send(todos);
+    res.send({
+      status: 'Items found',
+      items: todos
+    });
   });
 });
 
@@ -34,7 +37,10 @@ router.post('/', function(req, res, next) {
     }
 
     // added!
-    res.send(todo);
+    res.send({
+      status: 'Item added',
+      itemId: todo._id
+    });
   });
 });
 
@@ -47,7 +53,9 @@ router.delete('/:id', function(req, res, next) {
     if (error) throw error;
 
     // removed!
-    res.send(todo);
+    res.send({
+      status: 'Item cleared'
+    });
   });
 });
 
@@ -61,7 +69,9 @@ router.put('/:id', function(req, res, next) {
     }
 
     // updated!
-    res.send(todo);
+    res.send({
+      status: 'Item updated'
+    });
   });
 });
 
