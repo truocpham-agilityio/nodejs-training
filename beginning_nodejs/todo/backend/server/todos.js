@@ -20,6 +20,7 @@ router.get('/', function(req, res, next) {
       throw error;
     }
 
+    // get all!
     res.send(todos);
   });
 });
@@ -27,13 +28,38 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
   var data = req.body;
 
-  console.log(data);
-
   databaseServices.todos.create(data, function(error, todo) {
     if (error) {
       throw error;
     }
 
+    // added!
+    res.send(todo);
+  });
+});
+
+router.delete('/:id', function(req, res, next) {
+  var id = req.params['id'];
+  var item =  databaseServices.todos.modelClass.findOne({ '_id': id });
+
+  item.findOneAndRemove(function(error, todos) {
+    if (error) throw error;
+
+    // removed!
+    res.send(todos);
+  });
+});
+
+router.put('/:id', function(req, res, next) {
+  var id = req.params['id'];
+
+  // findById and update the details of item
+  databaseServices.todos.modelClass.findOneAndUpdate({ '_id': id }, { 'details': 'Updated!' }, function(error, todo) {
+    if (error) {
+      throw error;
+    }
+
+    // updated!
     res.send(todo);
   });
 });
