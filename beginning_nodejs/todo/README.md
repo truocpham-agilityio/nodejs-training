@@ -20,3 +20,5 @@ node server/app.js
 
 ### Cliend side
 
+Using AngularJS framework to render.
+
