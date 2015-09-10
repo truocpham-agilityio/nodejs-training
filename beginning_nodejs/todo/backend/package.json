@@ -19,9 +19,11 @@
     "express-session": "^1.11.3",
     "jade": "^1.11.0",
     "less-middleware": "^2.0.1",
+    "limiter": "^1.0.5",
     "mongodb": "^1.4.39",
     "mongoose": "^4.1.6",
     "mongoskin": "^1.4.13",
+    "node-g3": "0.0.2",
     "serve-favicon": "^2.3.0",
     "underscore": "^1.8.3"
   }
