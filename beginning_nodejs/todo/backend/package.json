@@ -23,6 +23,7 @@
     "mongodb": "^1.4.39",
     "mongoose": "^4.1.6",
     "mongoskin": "^1.4.13",
+    "nconf": "^0.7.2",
     "node-g3": "0.0.2",
     "q": "^1.4.1",
     "serve-favicon": "^2.3.0",

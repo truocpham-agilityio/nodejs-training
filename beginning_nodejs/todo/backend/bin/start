@@ -1,0 +1,49 @@
+#!/usr/bin/env node
+
+/**
+ * This script allow developer run a service of application (web, client or master scraper)
+ */
+var assert = require('assert'),
+    Configs = require('../utils/configs'),
+    DashboardServer = require('../server');
+
+///////////////////////////////////////////////////////////////////////////////
+// How to run
+// ./bin/start --scraper client
+//    To run the client scraper server
+//
+// ./bin/start --scraper master
+//    To run the master scraper server
+//
+// ./bin/start --scraper all
+//    To run the master and client scraper server
+//
+// ./bin/start --web
+//    To run the web server
+//
+// ./bin/start --dashboard
+//    To run the dashboard server
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+var sys = {};
+var configs = sys.configs = Configs;
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+// Runs the dashboard server
+function runDashboardServer(callback) {
+
+  var dashboardServer = sys.dashboardServer = new DashboardServer({
+    configs: sys.configs
+  });
+
+  // start server
+  dashboardServer.start(callback);
+}
+
+runDashboardServer(function () {
+  // TODO
+});

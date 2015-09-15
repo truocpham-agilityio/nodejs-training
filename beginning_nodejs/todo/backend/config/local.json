@@ -1,0 +1,13 @@
+{
+  "database": {
+    "mongodb": {
+      "connectionString": "mongodb://127.0.0.1:27017/demo"
+    }
+  },
+  "dashboard": {
+    "server": "local",
+    "apiHost": "0.0.0.0",
+    "apiPort": 3000,
+    "rootPath": "/../../frontend/app/"
+  }
+}
