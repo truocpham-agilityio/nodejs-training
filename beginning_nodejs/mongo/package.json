@@ -23,7 +23,7 @@
     "jade": "^1.11.0",
     "less-middleware": "^2.0.1",
     "mongodb": "^1.4.39",
-    "mongoose": "^4.1.5",
+    "mongoose": "^5.9.28",
     "mongoskin": "^1.4.13",
     "underscore": "^1.8.3"
   }
