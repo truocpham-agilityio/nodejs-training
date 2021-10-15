@@ -1,1 +1,1 @@
-# This is git repo for Node.js training
+# Node.js Training
